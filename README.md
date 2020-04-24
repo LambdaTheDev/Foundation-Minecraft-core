@@ -1,6 +1,8 @@
 # Foundation-Minecraft-core
 Main plugin made for Foundation Minecraft server.
 
+Foundation Minecraft Discord: https://discord.gg/5Tw5Hyh
+
 # List of Minecraft commands:
 /chattype - changes chat type (local/global)
 
