@@ -1,20 +1,22 @@
 package pl.lambda.foundationminecraft.utils;
 
-import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.entities.User;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.discord.DiscordModule;
 import pl.lambda.foundationminecraft.utils.datastorage.PlayerDataStorage;
+import pl.lambda.foundationminecraft.utils.exceptions.GuildIDIsNullException;
+import pl.lambda.foundationminecraft.utils.exceptions.MemberIsNullException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 public class LPlayer
 {
@@ -31,7 +33,7 @@ public class LPlayer
     List<LRank> lambdaRanks;
     List<String> playerPermissions;
 
-    public LPlayer(String nickname, String lambdaPlayerID, String password, String discordID, ChatType chatType, int clearance, int money, boolean isSiteDirector, PermissionAttachment permissionAttachment, List<LRank> lambdaRanks)
+    private LPlayer(String nickname, String lambdaPlayerID, String password, String discordID, ChatType chatType, int clearance, int money, boolean isSiteDirector, PermissionAttachment permissionAttachment, List<LRank> lambdaRanks)
     {
         this.nickname = nickname;
         this.lambdaPlayerID = lambdaPlayerID;
@@ -56,6 +58,26 @@ public class LPlayer
         }
 
         this.playerPermissions = playerPermissions;
+    }
+
+    //<section-fold desc="getters and setters">
+
+    @Override
+    public String toString() {
+        return "LPlayer{" +
+                "nickname='" + nickname + '\'' +
+                ", lambdaPlayerID='" + lambdaPlayerID + '\'' +
+                ", password='" + password + '\'' +
+                ", discordID='" + discordID + '\'' +
+                ", chatType=" + chatType +
+                ", clearance=" + clearance +
+                ", money=" + money +
+                ", isSiteDirector=" + isSiteDirector +
+                ", currentRank=" + currentRank +
+                ", permissionAttachment=" + permissionAttachment +
+                ", lambdaRanks=" + lambdaRanks +
+                ", playerPermissions=" + playerPermissions +
+                '}';
     }
 
     public String getNickname() {
@@ -151,91 +173,231 @@ public class LPlayer
         playerDataStorage.save();
     }
 
-    public static LPlayer loadByLambdaID(String lambdaID, String nickname, Player p)
+    public static LPlayer getLambdaPlayerByLambdaID(String lambdaID)
     {
         PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
-        Config config = FoundationMinecraft.instance.getFMCConfig();
 
-        if(playerDataStorage.getData().get("players." + lambdaID + ".nickname") == null)
+        String nickname = playerDataStorage.getData().getString("players." + lambdaID + ".nickname");
+        if(nickname == null)
         {
-            //create new Lambda Player
-            PermissionAttachment attachment = p.addAttachment(FoundationMinecraft.getPlugin(FoundationMinecraft.class));
-            LPlayer lPlayer = new LPlayer(nickname, lambdaID, "not-implemented", null, ChatType.GLOBAL, -1, 0, false, attachment, new ArrayList<LRank>());
-            lPlayer.saveToFile();
-            FoundationMinecraft.instance.lambdaPlayers.put(p, lPlayer);
-            return lPlayer;
+            return null;
         }
 
+        Player p = Bukkit.getPlayer(nickname);
+        if(p != null)
+        {
+            return FoundationMinecraft.instance.lambdaPlayers.get(p);
+        }
+
+        String password = playerDataStorage.getData().getString("players." + lambdaID + ".password");
         String discordID = playerDataStorage.getData().getString("players." + lambdaID + ".discordid");
         int money = playerDataStorage.getData().getInt("players." + lambdaID + ".money");
-        List<String> lambdaRankIDs = playerDataStorage.getData().getStringList("players." + lambdaID + ".lambdaRanks");
+        List<LRank> lambdaRanks = new ArrayList<>();
 
-        int clearance = -1;
-        boolean isSiteDirector = false;
-        JDA jda = FoundationMinecraft.instance.discordModule.jda;
-        User u = jda.getUserById(discordID);
-        if(u == null)
+        List<String> lambdaRanksString = playerDataStorage.getData().getStringList("players." + lambdaID + ".lambdaRanks");
+        for(String lambdaRank : lambdaRanksString)
         {
-            discordID = null;
+            LRank lRank = FoundationMinecraft.instance.ranks.get(lambdaRank);
+            lambdaRanks.add(lRank);
+        }
+
+        LPlayer lPlayer = new LPlayer(nickname, lambdaID, password, discordID, ChatType.GLOBAL, getClearance(lambdaID), money, isSiteDirector(lambdaID), null, lambdaRanks);
+        return lPlayer;
+    }
+
+    public static LPlayer getLambdaPlayerByNickname(String nickname)
+    {
+        PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
+        ConfigurationSection section = playerDataStorage.getData().getConfigurationSection("players");
+        if(section == null) return null;
+
+        String lambdaID = null;
+        for(String loopedLambdaID : section.getKeys(false))
+        {
+            if(playerDataStorage.getData().getString("players." + loopedLambdaID + ".nickname").equalsIgnoreCase(nickname))
+            {
+                lambdaID = loopedLambdaID;
+                break;
+            }
+        }
+
+        if(lambdaID == null)
+        {
+            return null;
+        }
+
+        Player p = Bukkit.getPlayer(nickname);
+        if(p != null)
+        {
+            return FoundationMinecraft.instance.lambdaPlayers.get(p);
+        }
+
+        String password = playerDataStorage.getData().getString("players." + lambdaID + ".password");
+        String discordID = playerDataStorage.getData().getString("players." + lambdaID + ".discordid");
+        int money = playerDataStorage.getData().getInt("players." + lambdaID + ".money");
+        List<LRank> lambdaRanks = new ArrayList<>();
+
+        List<String> lambdaRanksString = playerDataStorage.getData().getStringList("players." + lambdaID + ".lambdaRanks");
+        for(String lambdaRank : lambdaRanksString)
+        {
+            LRank lRank = FoundationMinecraft.instance.ranks.get(lambdaRank);
+            lambdaRanks.add(lRank);
+        }
+
+        LPlayer lPlayer = new LPlayer(nickname, lambdaID, password, discordID, ChatType.GLOBAL, getClearance(lambdaID), money, isSiteDirector(lambdaID), null, lambdaRanks);
+        return lPlayer;
+    }
+
+    public static LPlayer createLambdaPlayer(String nickname)
+    {
+        //String nickname, String lambdaPlayerID, String password, String discordID, ChatType chatType, int clearance,
+        //int money, boolean isSiteDirector, PermissionAttachment permissionAttachment, List<LRank> lambdaRanks
+
+        String lambdaID = UUID.randomUUID().toString();
+        String password = "not-implemented";
+        String discordID = null;
+        ChatType type = ChatType.GLOBAL;
+        int clearance = -1;
+        int money = 0;
+        boolean isSiteDirector = false;
+        PermissionAttachment permissionAttachment = null;
+        List<LRank> lambdaRank = new ArrayList<>();
+
+        Player p = Bukkit.getPlayer(nickname);
+        if(p != null)
+        {
+            permissionAttachment = p.addAttachment(FoundationMinecraft.getPlugin(FoundationMinecraft.class));
+        }
+
+        LPlayer lPlayer = new LPlayer(nickname, lambdaID, password, discordID, type, clearance, money, isSiteDirector, permissionAttachment, lambdaRank);
+        return lPlayer;
+    }
+
+    public static int getClearance(String lambdaID)
+    {
+        Config config = FoundationMinecraft.instance.getFMCConfig();
+        PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
+        DiscordModule discordModule = FoundationMinecraft.instance.discordModule;
+        String discordID = playerDataStorage.getData().getString("players." + lambdaID + ".discordid");
+        if(discordID == null) return -1;
+
+        Guild guild = discordModule.jda.getGuildById(config.guildID);
+        if(guild == null)
+        {
+            try {
+                throw new GuildIDIsNullException();
+            } catch (GuildIDIsNullException e) {
+                e.printStackTrace();
+                return -1;
+            }
+        }
+
+        if(guild.getMemberById(discordID) == null)
+        {
+            try
+            {
+                throw new MemberIsNullException();
+            }
+            catch (MemberIsNullException e)
+            {
+                e.printStackTrace();
+                return -1;
+            }
+        }
+
+        Member m = guild.getMemberById(discordID);
+        HashMap<String, Integer> clearanceRoleIDs = new HashMap<>();
+        clearanceRoleIDs.put(config.level0role, 0);
+        clearanceRoleIDs.put(config.level1role, 1);
+        clearanceRoleIDs.put(config.level2role, 2);
+        clearanceRoleIDs.put(config.level3role, 3);
+        clearanceRoleIDs.put(config.level4role, 4);
+        clearanceRoleIDs.put(config.level5role, 5);
+
+        List<Role> memberRoles;
+        if (m != null)
+        {
+            memberRoles = m.getRoles();
         }
         else
         {
-            Guild guild = jda.getGuildById(config.guildID);
-            if(guild == null)
+            return -1;
+        }
+
+        int clearance = -1;
+
+        for(Role r : memberRoles)
+        {
+            String roleID = r.getId();
+            if(clearanceRoleIDs.containsKey(roleID))
             {
-                discordID = null;
-            }
-            else
-            {
-                List<Role> userRoles = Objects.requireNonNull(guild.getMember(u)).getRoles();
-                if(!userRoles.isEmpty())
+                if(clearanceRoleIDs.get(roleID) > clearance)
                 {
-                    HashMap<String, Integer> roleIDs = new HashMap<>();
-                    roleIDs.put(config.level0role, 0);
-                    roleIDs.put(config.level1role, 1);
-                    roleIDs.put(config.level2role, 2);
-                    roleIDs.put(config.level3role, 3);
-                    roleIDs.put(config.level4role, 4);
-                    roleIDs.put(config.level5role, 5);
-
-                    String siteDirectorRoleID = config.siteDirectorRole;
-
-                    for(Role role : userRoles)
-                    {
-                        if(roleIDs.getOrDefault(role.getId(), -1) > clearance)
-                        {
-                            clearance = roleIDs.get(role.getId());
-                        }
-
-                        if(role.getId().equalsIgnoreCase(siteDirectorRoleID))
-                        {
-                            isSiteDirector = true;
-                        }
-                    }
+                    clearance = clearanceRoleIDs.get(roleID);
                 }
             }
         }
+        return clearance;
+    }
 
-        PermissionAttachment attachment = p.addAttachment(FoundationMinecraft.getPlugin(FoundationMinecraft.class));
-        List<LRank> ranks = new ArrayList<>();
+    public static boolean isSiteDirector(String lambdaID)
+    {
+        Config config = FoundationMinecraft.instance.getFMCConfig();
+        PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
+        DiscordModule discordModule = FoundationMinecraft.instance.discordModule;
+        String discordID = playerDataStorage.getData().getString("players." + lambdaID + ".discordid");
+        if(discordID == null) return false;
 
-        for(String lambdaRankID : lambdaRankIDs)
+        Guild guild = discordModule.jda.getGuildById(config.guildID);
+        if(guild == null)
         {
-            if(FoundationMinecraft.instance.ranks.get(lambdaRankID) != null)
-            {
-                ranks.add(FoundationMinecraft.instance.ranks.get(lambdaRankID));
+            try {
+                throw new GuildIDIsNullException();
+            } catch (GuildIDIsNullException e) {
+                e.printStackTrace();
+                return false;
             }
         }
 
-        LPlayer lPlayer = new LPlayer(nickname, lambdaID, "not-implemented", discordID, ChatType.GLOBAL, clearance, money, isSiteDirector, attachment, ranks);
-        FoundationMinecraft.instance.lambdaPlayers.put(p, lPlayer);
-        return lPlayer;
+        if(guild.getMemberById(discordID) == null)
+        {
+            try
+            {
+                throw new MemberIsNullException();
+            }
+            catch (MemberIsNullException e)
+            {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        Member m = guild.getMemberById(discordID);
+        String siteDirectorRoleID = config.siteDirectorRole;
+
+        List<Role> memberRoles;
+        if (m != null)
+        {
+            memberRoles = m.getRoles();
+        }
+        else
+        {
+            return false;
+        }
+
+        for(Role r : memberRoles)
+        {
+            String roleID = r.getId();
+            if(roleID.equalsIgnoreCase(siteDirectorRoleID)) return true;
+        }
+        return false;
     }
 
     public static boolean hasPlayedBefore(String nickname)
     {
         PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
         ConfigurationSection section = playerDataStorage.getData().getConfigurationSection("players");
+        if(section == null) return false;
         for(String lambdaID : section.getKeys(false))
         {
             if(playerDataStorage.getData().getString("players." + lambdaID + ".nickname").equalsIgnoreCase(nickname))
@@ -250,6 +412,7 @@ public class LPlayer
     {
         PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
         ConfigurationSection section = playerDataStorage.getData().getConfigurationSection("players");
+        if(section == null) return null;
         for(String lambdaID : section.getKeys(false))
         {
             if(playerDataStorage.getData().getString("players." + lambdaID + ".nickname").equalsIgnoreCase(nickname))

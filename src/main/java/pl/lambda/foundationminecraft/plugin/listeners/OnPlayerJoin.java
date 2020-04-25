@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
@@ -16,35 +17,43 @@ import java.util.UUID;
 
 public class OnPlayerJoin implements Listener
 {
+    @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e)
     {
         PlayerDataStorage playerDataStorage = FoundationMinecraft.instance.getPlayerDataStorage();
         String nickname = e.getPlayer().getName();
         Player p = e.getPlayer();
 
-        String hasPlayedBefore = null;
+        String loopedLambdaID = null;
         ConfigurationSection check = playerDataStorage.getData().getConfigurationSection("players");
-        for(String lambdaID : check.getKeys(false))
+        if(check != null)
         {
-            if(playerDataStorage.getData().getString("players." + lambdaID + ".nickname").equals(nickname))
+            for(String lambdaID : check.getKeys(false))
             {
-                hasPlayedBefore = lambdaID;
-                break;
+                if(playerDataStorage.getData().getString("players." + lambdaID + ".nickname").equals(nickname))
+                {
+                    loopedLambdaID = lambdaID;
+                    break;
+                }
             }
         }
 
-        if(hasPlayedBefore != null)
+        LPlayer lPlayer = null;
+
+        if(loopedLambdaID != null)
         {
             //played
-            LPlayer.loadByLambdaID(hasPlayedBefore, nickname, p);
+            lPlayer = LPlayer.getLambdaPlayerByLambdaID(loopedLambdaID);
         }
-        else
+
+        if(lPlayer == null)
         {
-            //first join
-            LPlayer.loadByLambdaID(UUID.randomUUID().toString(), nickname, p);
+            lPlayer = LPlayer.createLambdaPlayer(nickname);
         }
 
         if(!p.hasPlayedBefore()) p.teleport(FoundationMinecraft.instance.getFMCConfig().spawnLocation);
+        lPlayer.saveToFile();
+        FoundationMinecraft.instance.lambdaPlayers.put(e.getPlayer(), lPlayer);
 
         Config config = FoundationMinecraft.instance.getFMCConfig();
         e.setJoinMessage(config.messagePrefix + ChatColor.GREEN + p.getName() + " has joined server (" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getMaxPlayers() + ")!");

@@ -31,6 +31,7 @@ public class MChattypeCmd implements CommandExecutor, ILMinecraftCommand
 
         Player p = (Player) sender;
         LPlayer lp = FoundationMinecraft.instance.lambdaPlayers.get(p);
+        System.out.println(FoundationMinecraft.instance.lambdaPlayers.toString());
         ChatType currentType = lp.getChatType();
 
         if(currentType == ChatType.GLOBAL)

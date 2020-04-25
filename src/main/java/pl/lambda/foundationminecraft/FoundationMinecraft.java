@@ -1,5 +1,6 @@
 package pl.lambda.foundationminecraft;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,18 +17,19 @@ import pl.lambda.foundationminecraft.utils.datastorage.SyncDataStorage;
 
 import java.awt.*;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class FoundationMinecraft extends JavaPlugin
 {
     public static final String VERSION = "2.0";
     public static final String INFO = "";
-
     public static FoundationMinecraft instance;
     public static boolean serverLoaded = false;
 
     public HashMap<Player, LPlayer> lambdaPlayers = new HashMap<>();
     public HashMap<String, LRank> ranks = new HashMap<>();
     public DiscordModule discordModule;
+    public Logger logger = Bukkit.getLogger();
 
     Config config;
     PlayerDataStorage playerDataStorage;
