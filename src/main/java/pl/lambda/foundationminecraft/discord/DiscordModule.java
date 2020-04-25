@@ -7,6 +7,9 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
+import pl.lambda.foundationminecraft.discord.commands.DDeletedeptCmd;
+import pl.lambda.foundationminecraft.discord.commands.DRefreshrolesCmd;
+import pl.lambda.foundationminecraft.discord.commands.DSyncCmd;
 import pl.lambda.foundationminecraft.discord.commands.ILDiscordCommand;
 import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleAdd;
 import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleRemove;
@@ -36,6 +39,7 @@ public class DiscordModule
             jda = JDABuilder.createDefault(config.botToken, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_VOICE_STATES)
                     .setActivity(Activity.watching("you"))
                     .addEventListeners(new OnReady(), new OnMessageReceived(), new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove())
+                    .addEventListeners(new DDeletedeptCmd(), new DRefreshrolesCmd(), new DSyncCmd())
                     .build();
         }
         catch (LoginException e)
