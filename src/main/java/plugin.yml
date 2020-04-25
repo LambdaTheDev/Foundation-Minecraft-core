@@ -1,0 +1,7 @@
+name: FMCCore
+version: 1.0
+main: pl.ytskagamer.fmc.plugin.FMC
+commands:
+  sync:
+  depts:
+  chattype:
