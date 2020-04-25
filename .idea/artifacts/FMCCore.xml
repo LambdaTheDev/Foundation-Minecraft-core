@@ -1,8 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="FMCCore">
-    <output-path>$PROJECT_DIR$/../Bot testing server/plugins</output-path>
+    <output-path>$PROJECT_DIR$/../../=Minecraft test servers=/Catserver 1.12.2/plugins</output-path>
     <root id="archive" name="FMCCore.jar">
-      <element id="module-output" name="FMCCore_v2.0.main" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/club.minnced/opus-java-api/1.0.4/20e4fafa8523ed391446ddc7dff60ef832f1543a/opus-java-api-1.0.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/club.minnced/opus-java-natives/1.0.4/292d015243833578eda04b1ad0af2dc351b14b1b/opus-java-natives-1.0.4.jar" path-in-jar="/" />
       <element id="archive" name="Gradle: club.minnced:opus-java:pom:1.0.4.jar">
@@ -22,6 +21,7 @@
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/16.0.1/c1a6655cebcac68e63e4c24d23f573035032eb2a/annotations-16.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar" path-in-jar="/" />
       <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+      <element id="module-output" name="Foundation-Minecraft-core.main" />
     </root>
   </artifact>
 </component>
