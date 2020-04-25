@@ -35,7 +35,7 @@ public class DiscordModule
 
         try
         {
-            jda = JDABuilder.createDefault(config.botToken, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_VOICE_STATES)
+            jda = JDABuilder.createDefault(config.botToken, GatewayIntent.getIntents(GatewayIntent.DEFAULT))
                     .setActivity(Activity.watching("you"))
                     .addEventListeners(new OnReady(), new OnMessageReceived(), new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove())
                     .addEventListeners(new DDeletedeptCmd(), new DRefreshrolesCmd(), new DSyncCmd(), new DSetupdeptCmd())
