@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DDeletedeptCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DDeletedeptCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DRefreshrolesCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DRefreshrolesCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSetupdeptCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSetupdeptCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSyncCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSyncCmd.java" afterDir="false" />
-    </list>
+    <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

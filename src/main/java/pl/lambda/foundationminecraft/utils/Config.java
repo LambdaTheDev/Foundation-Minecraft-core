@@ -66,6 +66,7 @@ public class Config
         {
             e.printStackTrace();
         }
+        reloadConfigObject();
     }
 
     public void reload()
