@@ -63,7 +63,6 @@ public class FoundationMinecraft extends JavaPlugin
         syncDataStorage = new SyncDataStorage();
 
         config.setup();
-        config.getConfig().reloadConfigObject();
         playerDataStorage.setup();
         rankDataStorage.setup();
         syncDataStorage.setup();
@@ -101,7 +100,8 @@ public class FoundationMinecraft extends JavaPlugin
         getServer().getPluginManager().registerEvents(new OnAsyncPlayerPreLogin(), this);
     }
 
-    public Config getFMCConfig() {
+    public Config getFMCConfig()
+    {
         return config;
     }
 

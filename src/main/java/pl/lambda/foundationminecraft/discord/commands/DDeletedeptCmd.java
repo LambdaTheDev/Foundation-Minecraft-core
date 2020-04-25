@@ -7,6 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.utils.Config;
 import pl.lambda.foundationminecraft.utils.LRank;
+import pl.lambda.foundationminecraft.utils.Utils;
 import pl.lambda.foundationminecraft.utils.datastorage.RankDataStorage;
 
 import java.awt.*;
@@ -29,10 +30,10 @@ public class DDeletedeptCmd extends ListenerAdapter implements ILDiscordCommand
             channel = e.getTextChannel();
             checkIfDeprecated();
 
-            if(args.length == 2)
+            if(args.length >= 2)
             {
                 RankDataStorage rankDataStorage = FoundationMinecraft.instance.getRankDataStorage();
-                String name = args[1];
+                String name = Utils.stringBuilder(args, 1);
 
                 ConfigurationSection lookForLambdaID = rankDataStorage.getData().getConfigurationSection("ranks");
                 LRank lRank = null;

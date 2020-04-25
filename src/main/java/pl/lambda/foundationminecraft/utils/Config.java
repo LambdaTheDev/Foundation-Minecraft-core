@@ -112,6 +112,31 @@ public class Config
         save();
     }
 
+    @Override
+    public String toString() {
+        return "Config{" +
+                "plugin=" + plugin +
+                ", configFile=" + configFile +
+                ", config=" + config +
+                ", botToken='" + botToken + '\'' +
+                ", botPrefix='" + botPrefix + '\'' +
+                ", syncChannelID='" + syncChannelID + '\'' +
+                ", guildID='" + guildID + '\'' +
+                ", discordInvitation='" + discordInvitation + '\'' +
+                ", spawnLocation=" + spawnLocation +
+                ", messagePrefix='" + messagePrefix + '\'' +
+                ", noPermissionMessage='" + noPermissionMessage + '\'' +
+                ", motd='" + motd + '\'' +
+                ", level0role='" + level0role + '\'' +
+                ", level1role='" + level1role + '\'' +
+                ", level2role='" + level2role + '\'' +
+                ", level3role='" + level3role + '\'' +
+                ", level4role='" + level4role + '\'' +
+                ", level5role='" + level5role + '\'' +
+                ", siteDirectorRole='" + siteDirectorRole + '\'' +
+                '}';
+    }
+
     public Config getConfig()
     {
         reloadConfigObject();
@@ -121,7 +146,7 @@ public class Config
     public void reloadConfigObject()
     {
         this.botToken = config.getString("discord.botToken");
-        this.botPrefix = config.getString("discord.prefix");
+        this.botPrefix = config.getString("discord.botPrefix");
         this.syncChannelID = config.getString("discord.syncChannelID");
         this.guildID = config.getString("discord.guildID");
         this.discordInvitation = config.getString("discord.invitation");

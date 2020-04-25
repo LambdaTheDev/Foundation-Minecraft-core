@@ -105,16 +105,17 @@ public class LRank
 
     public static void createRank(String name, String shortcut, String discordID, String color)
     {
+        String uuid = UUID.randomUUID().toString();
         RankDataStorage rankDataStorage = FoundationMinecraft.instance.getRankDataStorage();
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".color", color);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".shortcut", shortcut);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".name", name);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".discordid", discordID);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".permissions", Arrays.asList("default"));
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.x", 0);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.y", 0);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.z", 0);
-        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.w", "world");
+        rankDataStorage.getData().set("ranks." + uuid + ".color", color);
+        rankDataStorage.getData().set("ranks." + uuid + ".shortcut", shortcut);
+        rankDataStorage.getData().set("ranks." + uuid + ".name", name);
+        rankDataStorage.getData().set("ranks." + uuid + ".discordid", discordID);
+        rankDataStorage.getData().set("ranks." + uuid + ".permissions", Arrays.asList("default"));
+        rankDataStorage.getData().set("ranks." + uuid + ".spawnLoc.x", 0);
+        rankDataStorage.getData().set("ranks." + uuid + ".spawnLoc.y", 0);
+        rankDataStorage.getData().set("ranks." + uuid + ".spawnLoc.z", 0);
+        rankDataStorage.getData().set("ranks." + uuid + ".spawnLoc.w", "world");
         rankDataStorage.save();
     }
 }

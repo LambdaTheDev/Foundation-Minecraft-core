@@ -24,14 +24,11 @@ public class DSyncCmd extends ListenerAdapter implements ILDiscordCommand
     @Override
     public void onMessageReceived(MessageReceivedEvent e)
     {
-
         String[] args = e.getMessage().getContentRaw().split(" ");
         String prefix = config.botPrefix;
 
-        System.out.println(config.botPrefix);
         if(args[0].equalsIgnoreCase(prefix + "sync"))
         {
-            System.out.println("handled:" + config.botPrefix);
             if(e.getAuthor().isBot()) return;
 
             channel = e.getTextChannel();
@@ -55,15 +52,13 @@ public class DSyncCmd extends ListenerAdapter implements ILDiscordCommand
                 syncDataStorage.save();
 
                 e.getAuthor().openPrivateChannel().queue((privateChannel ->
-                {
-                    privateChannel.sendMessage("**Hey!** Your sync code is: " + code + "! Type in-game command /sync " + code + ", so sync procedure will be finished.").queue();
-                }));
+                        privateChannel.sendMessage("**Hey!** Your sync code is: " + code + "! Type in-game command /sync " + code + ", so sync procedure will be finished.").queue()));
 
                 FoundationMinecraft.instance.discordModule.sendMessageToChannel("Sync started!", Color.green, "You started synchronization!", "You started sync procedure for " + p.getName() + ". Check your DMs to get sync code (if you have disabled DMs, enable them and restart procedure)!", channel);
             }
             else
             {
-                getUsageMessage(prefix + "deletedept <name>");
+                getUsageMessage(prefix + "sync <Minecraft nickname>");
             }
         }
     }

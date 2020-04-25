@@ -9,8 +9,10 @@
     <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DDeletedeptCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DDeletedeptCmd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSyncCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSyncCmd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/LRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/LRank.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,16 +116,25 @@
       <option name="presentableId" value="Default" />
       <updated>1587641106198</updated>
     </task>
+    <task id="LOCAL-00001" summary="Config issue fix 2">
+      <created>1587828909901</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587828909901</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Config issue fix 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Config issue fix 2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1587816945157">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1587829070598">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587816945157" />
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587829070598" />
     <state x="560" y="272" width="532" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587821566591">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -140,10 +151,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587675581575" />
-    <state x="217" y="7" key="CommitChangelistDialog2" timestamp="1587828895606">
+    <state x="217" y="7" key="CommitChangelistDialog2" timestamp="1587828909136">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="217" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587828895606" />
+    <state x="217" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587828909136" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1587823598960">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
