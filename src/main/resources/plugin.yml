@@ -1,0 +1,16 @@
+name: FoundationMinecraft
+version: '2.0'
+main: pl.lambda.foundationminecraft.FoundationMinecraft
+authors: [Lambda]
+description: Plugin for FMC made for his good friend :)
+commands:
+  chattype:
+  depts:
+  gamemode:
+  keycard:
+  money:
+  pay:
+  setspawn:
+  spawn:
+  sync:
+  tp:
