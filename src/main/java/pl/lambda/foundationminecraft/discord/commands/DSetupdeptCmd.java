@@ -22,16 +22,19 @@ public class DSetupdeptCmd extends ListenerAdapter implements ILDiscordCommand
     @Override
     public void onMessageReceived(MessageReceivedEvent e)
     {
-        if (FoundationMinecraft.checkIfDeprecated(this.getClass()) != null)
-        {
-            FoundationMinecraft.instance.discordModule.sendMessageToChannel("Hey!", Color.yellow, "This command is deprecated!", FoundationMinecraft.checkIfDeprecated(this.getClass()), e.getTextChannel());
-        }
 
         String[] args = e.getMessage().getContentRaw().split(" ");
         String prefix = config.botPrefix;
 
         if (args[0].equalsIgnoreCase(prefix + "setupdept"))
         {
+            if(e.getAuthor().isBot()) return;
+
+            if (FoundationMinecraft.checkIfDeprecated(this.getClass()) != null)
+            {
+                FoundationMinecraft.instance.discordModule.sendMessageToChannel("Hey!", Color.yellow, "This command is deprecated!", FoundationMinecraft.checkIfDeprecated(this.getClass()), e.getTextChannel());
+            }
+
             if(!e.getMember().hasPermission(Permission.ADMINISTRATOR))
             {
                 getNoPermissionMessage();

@@ -29,6 +29,8 @@ public class DSyncCmd extends ListenerAdapter implements ILDiscordCommand
 
         if(args[0].equalsIgnoreCase(prefix + "sync"))
         {
+            if(e.getAuthor().isBot()) return;
+
             channel = e.getTextChannel();
             checkIfDeprecated();
 

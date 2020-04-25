@@ -24,6 +24,8 @@ public class DDeletedeptCmd extends ListenerAdapter implements ILDiscordCommand
 
         if(args[0].equalsIgnoreCase(prefix + "deletedept"))
         {
+            if(e.getAuthor().isBot()) return;
+
             channel = e.getTextChannel();
             checkIfDeprecated();
 

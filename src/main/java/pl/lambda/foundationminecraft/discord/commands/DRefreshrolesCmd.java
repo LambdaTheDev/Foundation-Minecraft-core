@@ -25,16 +25,19 @@ public class DRefreshrolesCmd extends ListenerAdapter implements ILDiscordComman
     @Override
     public void onMessageReceived(MessageReceivedEvent e)
     {
-        if(FoundationMinecraft.checkIfDeprecated(this.getClass()) != null)
-        {
-            FoundationMinecraft.instance.discordModule.sendMessageToChannel("Hey!", Color.yellow, "This command is deprecated!", FoundationMinecraft.checkIfDeprecated(this.getClass()), e.getTextChannel());
-        }
 
         String[] args = e.getMessage().getContentRaw().split(" ");
         String prefix = config.botPrefix;
 
         if(args[0].equalsIgnoreCase(prefix + "refreshroles"))
         {
+            if(e.getAuthor().isBot()) return;
+
+            if(FoundationMinecraft.checkIfDeprecated(this.getClass()) != null)
+            {
+                FoundationMinecraft.instance.discordModule.sendMessageToChannel("Hey!", Color.yellow, "This command is deprecated!", FoundationMinecraft.checkIfDeprecated(this.getClass()), e.getTextChannel());
+            }
+
             String discordID = e.getAuthor().getId();
             HashMap<Player, LPlayer> lambdaPlayers = FoundationMinecraft.instance.lambdaPlayers;
             LPlayer requestedPlayer = null;
