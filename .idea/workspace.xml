@@ -7,14 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/GuildIDIsNullException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/MemberIsNullException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MChattypeCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MChattypeCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerPreLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerPreLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/LPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/LPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSetupdeptCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSetupdeptCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSyncCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DSyncCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MDeptsCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MDeptsCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MSyncCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MSyncCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerQuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerQuit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/datastorage/SyncDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/datastorage/SyncDataStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +66,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="foundation-minecraft-core" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../=Minecraft test servers=/Catserver 1.12.2/plugins" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -199,7 +206,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerChat.java</url>
-          <line>22</line>
+          <line>31</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
