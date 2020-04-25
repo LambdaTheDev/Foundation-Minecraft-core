@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CorePlugin.iml" filepath="$PROJECT_DIR$/.idea/modules/CorePlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CorePlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CorePlugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CorePlugin.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CorePlugin.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FMCCore.iml" filepath="$PROJECT_DIR$/FMCCore.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+name: FMCCore
+version: 1.0
+main: pl.lambda.fmc.plugin.FMC
+commands:
+  sync:
+  depts:
+  chattype:
+  money:
+  pay:
+  tp:
+  msg:
+  gm:
+  spawn:
+  setspawn:
+  keycard:

@@ -1,0 +1,4 @@
+name: FMCCore
+version: @version@
+main: pl.lambda.fmc.FMCCore
+authors: [Lambda]
