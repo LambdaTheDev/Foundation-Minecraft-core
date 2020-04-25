@@ -84,7 +84,7 @@ public class FoundationMinecraft extends JavaPlugin
         getCommand("keycard").setExecutor(new MKeycardCmd());
         getCommand("money").setExecutor(new MMoneyCmd());
         getCommand("pay").setExecutor(new MPayCmd());
-        getCommand("setspawm").setExecutor(new MSetspawnCmd());
+        getCommand("setspawn").setExecutor(new MSetspawnCmd());
         getCommand("spawn").setExecutor(new MSetspawnCmd());
         getCommand("sync").setExecutor(new MSyncCmd());
         getCommand("tp").setExecutor(new MTpCmd());
