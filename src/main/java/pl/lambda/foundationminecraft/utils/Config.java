@@ -118,7 +118,7 @@ public class Config
         return this;
     }
 
-    void reloadConfigObject()
+    public void reloadConfigObject()
     {
         this.botToken = config.getString("discord.botToken");
         this.botPrefix = config.getString("discord.prefix");

@@ -63,7 +63,7 @@ public class FoundationMinecraft extends JavaPlugin
         syncDataStorage = new SyncDataStorage();
 
         config.setup();
-        config.getConfig();
+        config.getConfig().reloadConfigObject();
         playerDataStorage.setup();
         rankDataStorage.setup();
         syncDataStorage.setup();

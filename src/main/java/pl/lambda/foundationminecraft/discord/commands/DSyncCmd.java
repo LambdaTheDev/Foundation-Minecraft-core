@@ -24,11 +24,14 @@ public class DSyncCmd extends ListenerAdapter implements ILDiscordCommand
     @Override
     public void onMessageReceived(MessageReceivedEvent e)
     {
+
         String[] args = e.getMessage().getContentRaw().split(" ");
         String prefix = config.botPrefix;
 
+        System.out.println(config.botPrefix);
         if(args[0].equalsIgnoreCase(prefix + "sync"))
         {
+            System.out.println("handled:" + config.botPrefix);
             if(e.getAuthor().isBot()) return;
 
             channel = e.getTextChannel();
