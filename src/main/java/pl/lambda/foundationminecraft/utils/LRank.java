@@ -8,8 +8,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.utils.datastorage.RankDataStorage;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ForkJoinPool;
+import java.util.UUID;
 
 public class LRank
 {
@@ -100,5 +101,20 @@ public class LRank
             Location location = new Location(locationW, locationX, locationY, locationZ);
             FoundationMinecraft.instance.ranks.put(rank, new LRank(rank, discordID, shortcut, color, name, shortcut, permissions, location));
         }
+    }
+
+    public static void createRank(String name, String shortcut, String discordID, String color)
+    {
+        RankDataStorage rankDataStorage = FoundationMinecraft.instance.getRankDataStorage();
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".color", color);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".shortcut", shortcut);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".name", name);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".discordid", discordID);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".permissions", Arrays.asList("default"));
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.x", 0);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.y", 0);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.z", 0);
+        rankDataStorage.getData().set("ranks." + UUID.randomUUID().toString() + ".spawnLoc.w", "world");
+        rankDataStorage.save();
     }
 }

@@ -4,13 +4,12 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Invite;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.bukkit.ChatColor;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
-import pl.lambda.foundationminecraft.discord.commands.DDeletedeptCmd;
-import pl.lambda.foundationminecraft.discord.commands.DRefreshrolesCmd;
-import pl.lambda.foundationminecraft.discord.commands.DSyncCmd;
-import pl.lambda.foundationminecraft.discord.commands.ILDiscordCommand;
+import pl.lambda.foundationminecraft.discord.commands.*;
 import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleAdd;
 import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleRemove;
 import pl.lambda.foundationminecraft.discord.listeners.OnMessageReceived;
@@ -39,7 +38,7 @@ public class DiscordModule
             jda = JDABuilder.createDefault(config.botToken, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_VOICE_STATES)
                     .setActivity(Activity.watching("you"))
                     .addEventListeners(new OnReady(), new OnMessageReceived(), new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove())
-                    .addEventListeners(new DDeletedeptCmd(), new DRefreshrolesCmd(), new DSyncCmd())
+                    .addEventListeners(new DDeletedeptCmd(), new DRefreshrolesCmd(), new DSyncCmd(), new DSetupdeptCmd())
                     .build();
         }
         catch (LoginException e)
@@ -93,5 +92,10 @@ public class DiscordModule
     public static DiscordModule getInstance()
     {
         return FoundationMinecraft.instance.discordModule;
+    }
+
+    public void sendUsageMessage(String usage, TextChannel channel)
+    {
+        sendMessageToChannel("Wrong usage!", Color.red, "You haven't used that command successfully!", "Correct usage: " + usage + ".", channel);
     }
 }
