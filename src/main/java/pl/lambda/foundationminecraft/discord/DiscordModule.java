@@ -89,6 +89,20 @@ public class DiscordModule
         channel.sendMessage(buildMessage(title, color, fieldTitle, message).build()).queue();
     }
 
+    public void sendRawMessageToSyncChannel(String message)
+    {
+        Config config = FoundationMinecraft.instance.getFMCConfig();
+        TextChannel channel = jda.getTextChannelById(config.syncChannelID);
+        if(channel == null)
+        {
+            channel = jda.getTextChannels().get(0);
+            channel.sendMessage(buildMessage("Error handled!", Color.red, "Sync channel not found!", "Check if synchronization channel ID is correct in config. If you think that everything is correct and this still appears, contact staff.").build()).queue();
+            return;
+        }
+
+        channel.sendMessage(message).queue();
+    }
+
     public static DiscordModule getInstance()
     {
         return FoundationMinecraft.instance.discordModule;
