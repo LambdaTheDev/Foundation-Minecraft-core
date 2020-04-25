@@ -4,10 +4,12 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Invite;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.bukkit.ChatColor;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
-import pl.lambda.foundationminecraft.discord.commands.ILDiscordCommand;
+import pl.lambda.foundationminecraft.discord.commands.*;
 import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleAdd;
 import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleRemove;
 import pl.lambda.foundationminecraft.discord.listeners.OnMessageReceived;
@@ -36,6 +38,7 @@ public class DiscordModule
             jda = JDABuilder.createDefault(config.botToken, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_VOICE_STATES)
                     .setActivity(Activity.watching("you"))
                     .addEventListeners(new OnReady(), new OnMessageReceived(), new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove())
+                    .addEventListeners(new DDeletedeptCmd(), new DRefreshrolesCmd(), new DSyncCmd(), new DSetupdeptCmd())
                     .build();
         }
         catch (LoginException e)
@@ -86,8 +89,27 @@ public class DiscordModule
         channel.sendMessage(buildMessage(title, color, fieldTitle, message).build()).queue();
     }
 
+    public void sendRawMessageToSyncChannel(String message)
+    {
+        Config config = FoundationMinecraft.instance.getFMCConfig();
+        TextChannel channel = jda.getTextChannelById(config.syncChannelID);
+        if(channel == null)
+        {
+            channel = jda.getTextChannels().get(0);
+            channel.sendMessage(buildMessage("Error handled!", Color.red, "Sync channel not found!", "Check if synchronization channel ID is correct in config. If you think that everything is correct and this still appears, contact staff.").build()).queue();
+            return;
+        }
+
+        channel.sendMessage(message).queue();
+    }
+
     public static DiscordModule getInstance()
     {
         return FoundationMinecraft.instance.discordModule;
+    }
+
+    public void sendUsageMessage(String usage, TextChannel channel)
+    {
+        sendMessageToChannel("Wrong usage!", Color.red, "You haven't used that command successfully!", "Correct usage: " + usage + ".", channel);
     }
 }
