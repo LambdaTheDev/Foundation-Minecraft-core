@@ -53,6 +53,14 @@ public class FoundationMinecraft extends JavaPlugin
         SyncManager.clearSync();
         lambdaPlayers.clear();
         lambdaRanks.clear();
+        try
+        {
+            if(discordModule.getJDA() != null) discordModule.getJDA().shutdown();
+        }
+        catch (NoClassDefFoundError e)
+        {
+
+        }
     }
 
     private void setupFoundationMinecraft(PluginLoader type)
@@ -71,9 +79,11 @@ public class FoundationMinecraft extends JavaPlugin
                 syncDataStorage.setup();
 
                 LambdaRank.loadRanks();
+                break;
             case DISCORD:
                 discordModule = new DiscordModule();
-                new Thread(discordModule::start).start();
+                discordModule.start();
+                break;
             case COMMANDS:
                 getCommand("chattype").setExecutor(new MCmdChattype());
                 getCommand("depts").setExecutor(new MCmdDepts());
@@ -84,6 +94,7 @@ public class FoundationMinecraft extends JavaPlugin
                 getCommand("setspawn").setExecutor(new MCmdSetspawn());
                 getCommand("spawn").setExecutor(new MCmdSpawn());
                 getCommand("sync").setExecutor(new MCmdSync());
+                break;
             case LISTENERS:
                 getServer().getPluginManager().registerEvents(new OnAsyncPlayerChat(), this);
                 getServer().getPluginManager().registerEvents(new OnAsyncPlayerPreLogin(), this);
@@ -92,6 +103,7 @@ public class FoundationMinecraft extends JavaPlugin
                 getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
                 getServer().getPluginManager().registerEvents(new OnPlayerRespawn(), this);
                 getServer().getPluginManager().registerEvents(new OnServerPing(), this);
+                break;
         }
     }
 

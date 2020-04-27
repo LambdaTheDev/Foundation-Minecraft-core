@@ -3,6 +3,7 @@ package pl.lambda.foundationminecraft.discord.listeners;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleRemoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.utils.playerdata.LambdaPlayer;
 import pl.lambda.foundationminecraft.utils.ranksdata.LambdaRank;
 
@@ -12,6 +13,8 @@ public class OnGuildMemberRoleRemove extends ListenerAdapter
 {
     public void onGuildMemberRoleRemove(GuildMemberRoleRemoveEvent e)
     {
+        if(!FoundationMinecraft.SERVER_ENABLED) return;
+
         String discordID = e.getUser().getId();
         LambdaPlayer lambdaPlayer = LambdaPlayer.getLambdaPlayerByDiscord(discordID);
         if(lambdaPlayer == null) return;

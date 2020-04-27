@@ -7,50 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdDeletedept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdRefreshroles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSetupdept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSync.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleRemove.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnMessageReceived.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnReady.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdChattype.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdDepts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdGamemode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdKeycard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdMoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdSetspawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdSpawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdSync.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerPreLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerQuit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerRespawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnServerPing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/enums/ChatType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/enums/PluginLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/GuildIsNullException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/MemberIsNullException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/SyncChannelIsNullException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/playerdata/LambdaPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/playerdata/PlayerDataStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/ranksdata/LambdaRank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/ranksdata/RankDataStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/syncdata/SyncDataStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/syncdata/SyncManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/plugin.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleRemove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleRemove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnReady.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnReady.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/GuildIsNullException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/GuildIsNullException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/MemberIsNullException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/MemberIsNullException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/SyncChannelIsNullException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/exceptions/SyncChannelIsNullException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,10 +131,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Config issue fix 2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1587937353541">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1588014634874">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587937353541" />
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588014634874" />
     <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587913024989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -177,10 +143,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1587907983196" />
-    <state x="560" y="272" width="532" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587923920644">
+    <state x="560" y="272" width="532" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587985563286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="560" y="272" width="532" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1587923920644" />
+    <state x="560" y="272" width="532" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1587985563286" />
     <state x="51" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587669666184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -197,14 +163,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="217" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587828909136" />
-    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1587823598960">
+    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1587993609997">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587823598960" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1587913010379">
+    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587993609997" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1588014414329">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587913010379" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588014414329" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1587898198938">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -221,17 +187,33 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1587814535969" />
-    <state x="209" y="82" key="new project wizard" timestamp="1587706495943">
+    <state x="209" y="82" key="new project wizard" timestamp="1587993614072">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="82" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1587706495943" />
+    <state x="209" y="82" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1587993614072" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1587936969342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587936969342" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587937299141">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587987398958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587937299141" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587987398958" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -94,7 +94,7 @@ public class Config
 
     private void createDefaultConfig()
     {
-        reload();
+        config = YamlConfiguration.loadConfiguration(configFile);
         config.set("configVersion", CONFIG_VERSION);
         config.set("discord.botToken", "example-bot-token");
         config.set("discord.botPrefix", "+");
@@ -122,7 +122,6 @@ public class Config
 
     public Config buildObject()
     {
-        reload();
         this.configVersion = config.getInt("configVersion");
         this.discordBotToken = config.getString("discord.botToken");
         this.discordBotPrefix = config.getString("discord.botPrefix");

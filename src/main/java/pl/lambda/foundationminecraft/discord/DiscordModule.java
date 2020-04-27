@@ -17,8 +17,7 @@ import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleRemove;
 import pl.lambda.foundationminecraft.discord.listeners.OnMessageReceived;
 import pl.lambda.foundationminecraft.discord.listeners.OnReady;
 import pl.lambda.foundationminecraft.utils.Config;
-import pl.lambda.foundationminecraft.utils.exceptions.GuildIsNullException;
-import pl.lambda.foundationminecraft.utils.exceptions.SyncChannelIsNullException;
+import pl.lambda.foundationminecraft.utils.exceptions.MemberIsNullException;
 
 import javax.security.auth.login.LoginException;
 
@@ -30,32 +29,22 @@ public class DiscordModule
     private JDA jda;
     private Guild guild;
     private TextChannel syncChannel;
+    //private static boolean loaded = false;
 
     public void start()
     {
-        if(jda != null) return;
+        if(this.jda != null) return;
+
         try
         {
-            this.jda = JDABuilder.create(config.getDiscordBotToken(), GatewayIntent.getIntents(1))
+            this.jda = JDABuilder.create(config.getDiscordBotToken(), GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
                     .setActivity(Activity.watching("you"))
-                    .addEventListeners(new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove(), new OnMessageReceived(), new OnReady())
+                    .addEventListeners(new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove(), new OnMessageReceived(), new OnReady(this))
                     .addEventListeners(new DCmdDeletedept(this), new DCmdRefreshroles(this),
                             new DCmdSetupdept(this), new DCmdSync(this))
                     .build();
-
-            this.guild = jda.getGuildById(config.getDiscordGuild());
-            if(this.guild == null)
-            {
-                throw new GuildIsNullException();
-            }
-
-            this.syncChannel = this.guild.getTextChannelById(config.getDiscordSyncChannel());
-            if(syncChannel == null)
-            {
-                throw new SyncChannelIsNullException();
-            }
         }
-        catch (LoginException | GuildIsNullException | SyncChannelIsNullException e)
+        catch (LoginException | NullPointerException e)
         {
             e.printStackTrace();
             System.err.println("COULDN'T LOGIN TO DISCORD BOT. DISABLING SERVER...");
@@ -65,15 +54,33 @@ public class DiscordModule
 
     public JDA getJDA()
     {
-        return jda;
+        return this.jda;
     }
 
     public Guild getGuild()
     {
-        return guild;
+        return this.guild;
     }
 
     public TextChannel getSyncChannel() {
-        return syncChannel;
+        return this.syncChannel;
+    }
+
+    public void setGuild(Guild guild) {
+        this.guild = guild;
+    }
+
+    public void setSyncChannel(TextChannel syncChannel) {
+        this.syncChannel = syncChannel;
+    }
+
+    @Override
+    public String toString() {
+        return "DiscordModule{" +
+                "config=" + config +
+                ", jda=" + jda +
+                ", guild=" + guild +
+                ", syncChannel=" + syncChannel +
+                '}';
     }
 }
