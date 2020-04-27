@@ -2,7 +2,7 @@ name: FoundationMinecraft
 version: '2.0'
 main: pl.lambda.foundationminecraft.FoundationMinecraft
 authors: [Lambda]
-description: Plugin for FMC made for his good friend :)
+description: Plugin designed Foundation Minecraft server.
 commands:
   chattype:
   depts:
@@ -13,4 +13,3 @@ commands:
   setspawn:
   spawn:
   sync:
-  tp:
