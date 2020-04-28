@@ -22,8 +22,6 @@ Foundation Minecraft Discord: https://discord.gg/5Tw5Hyh
 
 /sync - synchronize Minecraft account with Discord acccount
 
-/tp - teleport to other player
-
 
 # List of Discord commands:
 +deletedept - delete rank
