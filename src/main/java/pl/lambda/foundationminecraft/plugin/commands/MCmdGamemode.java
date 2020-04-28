@@ -35,7 +35,7 @@ public class MCmdGamemode implements CommandExecutor
         {
             case "0":
             case "s":
-                if(!(clearance >= 3))
+                if(!(clearance >= 3 || lambdaPlayer.isGoiHighRank()))
                 {
                     sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "You can't change this gamemode to survival!");
                     return false;
