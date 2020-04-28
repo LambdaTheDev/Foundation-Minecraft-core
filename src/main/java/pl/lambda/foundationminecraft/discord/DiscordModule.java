@@ -12,12 +12,9 @@ import pl.lambda.foundationminecraft.discord.commands.DCmdDeletedept;
 import pl.lambda.foundationminecraft.discord.commands.DCmdRefreshroles;
 import pl.lambda.foundationminecraft.discord.commands.DCmdSetupdept;
 import pl.lambda.foundationminecraft.discord.commands.DCmdSync;
-import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleAdd;
-import pl.lambda.foundationminecraft.discord.listeners.OnGuildMemberRoleRemove;
 import pl.lambda.foundationminecraft.discord.listeners.OnMessageReceived;
 import pl.lambda.foundationminecraft.discord.listeners.OnReady;
 import pl.lambda.foundationminecraft.utils.Config;
-import pl.lambda.foundationminecraft.utils.exceptions.MemberIsNullException;
 
 import javax.security.auth.login.LoginException;
 
@@ -39,7 +36,7 @@ public class DiscordModule
         {
             this.jda = JDABuilder.create(config.getDiscordBotToken(), GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
                     .setActivity(Activity.watching("you"))
-                    .addEventListeners(new OnGuildMemberRoleAdd(), new OnGuildMemberRoleRemove(), new OnMessageReceived(), new OnReady(this))
+                    .addEventListeners(new OnMessageReceived(), new OnReady(this))
                     .addEventListeners(new DCmdDeletedept(this), new DCmdRefreshroles(this),
                             new DCmdSetupdept(this), new DCmdSync(this))
                     .build();

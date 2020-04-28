@@ -22,7 +22,7 @@ public class DCmdSync extends ListenerAdapter
     {
         String[] args = e.getMessage().getContentRaw().split(" ");
         Config config = FoundationMinecraft.getInstance().getFmcConfig();
-        if(args[0].equalsIgnoreCase("sync"))
+        if(args[0].equalsIgnoreCase(config.getDiscordBotPrefix() + "sync"))
         {
             if(args.length != 2)
             {

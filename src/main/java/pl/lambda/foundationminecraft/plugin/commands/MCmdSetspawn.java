@@ -22,6 +22,13 @@ public class MCmdSetspawn implements CommandExecutor
             return false;
         }
 
+        if(!sender.isOp())
+        {
+            sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.DARK_RED + "You don't have permission to use that command!");
+            return false;
+        }
+
+
         Config config = FoundationMinecraft.getInstance().getFmcConfig();
         Location location = ((Player) sender).getLocation();
 

@@ -1,6 +1,7 @@
 package pl.lambda.foundationminecraft.plugin.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -15,12 +16,18 @@ public class OnInventoryClick implements Listener
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e)
     {
+        if(e.getClickedInventory() == null) return;
         ItemStack item = e.getCurrentItem();
+        if(item.getItemMeta() == null) return;
         String inventoryName = e.getClickedInventory().getTitle();
         String itemName = item.getItemMeta().getDisplayName();
 
+
         if(inventoryName.equals("FMC: Main menu"))
         {
+            e.setCancelled(true);
+            e.getWhoClicked().closeInventory();
+
             if(itemName.equalsIgnoreCase("Choose department"))
             {
                 Bukkit.dispatchCommand(e.getWhoClicked(), "depts choose");
@@ -33,11 +40,16 @@ public class OnInventoryClick implements Listener
             {
                 Bukkit.dispatchCommand(e.getWhoClicked(), "depts info");
             }
-
-            e.getWhoClicked().closeInventory();
+            else
+            {
+                Bukkit.dispatchCommand(e.getWhoClicked(), "depts");
+            }
         }
         else if(inventoryName.equals("FMC: Choose department"))
         {
+            e.setCancelled(true);
+            e.getWhoClicked().closeInventory();
+
             List<LambdaRank> lambdaRanks = FoundationMinecraft.getInstance().getLambdaRanks();
 
             boolean found = false;
@@ -46,14 +58,13 @@ public class OnInventoryClick implements Listener
                 if(lambdaRank.getName().equalsIgnoreCase(itemName))
                 {
                     found = true;
-                    Bukkit.dispatchCommand(e.getWhoClicked(), "depts " + lambdaRank.getLambdaID());
+                    Bukkit.dispatchCommand(e.getWhoClicked(), "depts choose " + lambdaRank.getLambdaID());
                     break;
                 }
             }
 
-            if(!found) Bukkit.dispatchCommand(e.getWhoClicked(), "depts");
-
-            e.getWhoClicked().closeInventory();
+            if(!found)
+                e.getWhoClicked().sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "Provided role has not been found!");
         }
     }
 }

@@ -44,11 +44,18 @@ public class LambdaPlayer
 
     public void save()
     {
+        List<String> rankLambdaIDs = new ArrayList<>();
+        for(LambdaRank lambdaRank : this.lambdaRanks)
+        {
+            rankLambdaIDs.add(lambdaRank.getLambdaID());
+        }
+
         PlayerDataStorage playerDataStorage = FoundationMinecraft.getInstance().getPlayerDataStorage();
+        playerDataStorage.getData().set("players." + this.player.getUniqueId().toString(), null);
         playerDataStorage.getData().set("players." + this.player.getUniqueId().toString() + ".money", this.money);
         playerDataStorage.getData().set("players." + this.player.getUniqueId().toString() + ".nickname", this.nickname);
-        playerDataStorage.getData().set("players." + this.player.getUniqueId().toString() + ".lambdaRanks", this.lambdaRanks);
         playerDataStorage.getData().set("players." + this.player.getUniqueId().toString() + ".discordID", this.discordID);
+        playerDataStorage.getData().set("players." + this.player.getUniqueId().toString() + ".lambdaRanks", rankLambdaIDs);
         playerDataStorage.save();
     }
 
@@ -59,11 +66,9 @@ public class LambdaPlayer
         if(playerDataStorage.getData().getString("players." + uuid.toString() + ".nickname") != null)
         {
             int money = playerDataStorage.getData().getInt("players." + uuid.toString() + ".money");
-            String nickname = playerDataStorage.getData().getString("players." + uuid.toString() + ".nickname");
             String discordID = playerDataStorage.getData().getString("players." + uuid.toString() + ".discordID");
             List<String> lambdaRanksString = playerDataStorage.getData().getStringList("players." + uuid.toString() + ".lambdaRanks");
 
-            LambdaPlayer result;
             Player player;
             boolean isSiteDirector = false;
             int clearance = -1;
@@ -140,7 +145,8 @@ public class LambdaPlayer
         return new LambdaPlayer(player, null, false, 0, -1, new ArrayList<LambdaRank>());
     }
 
-    public Player getPlayer() {
+    public Player getPlayer()
+    {
         return player;
     }
 
@@ -200,7 +206,23 @@ public class LambdaPlayer
         return lambdaRanks;
     }
 
-    public void setLambdaRanks(List<LambdaRank> lambdaRanks) {
+    public void setLambdaRanks(List<LambdaRank> lambdaRanks)
+    {
         this.lambdaRanks = lambdaRanks;
+    }
+
+    @Override
+    public String toString() {
+        return "LambdaPlayer{" +
+                "player=" + player +
+                ", nickname='" + nickname + '\'' +
+                ", discordID='" + discordID + '\'' +
+                ", chatType=" + chatType +
+                ", isSiteDirector=" + isSiteDirector +
+                ", money=" + money +
+                ", clearance=" + clearance +
+                ", currentLambdaRank=" + currentLambdaRank +
+                ", lambdaRanks=" + lambdaRanks +
+                '}';
     }
 }

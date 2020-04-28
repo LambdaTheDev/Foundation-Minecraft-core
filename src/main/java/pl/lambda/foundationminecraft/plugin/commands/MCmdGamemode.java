@@ -42,6 +42,7 @@ public class MCmdGamemode implements CommandExecutor
                 }
                 ((Player) sender).setGameMode(GameMode.SURVIVAL);
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "Changed gamemode to survival successfully!");
+                break;
             case "1":
             case "c":
                 if(!(clearance >= 5))
@@ -51,10 +52,12 @@ public class MCmdGamemode implements CommandExecutor
                 }
                 ((Player) sender).setGameMode(GameMode.CREATIVE);
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "Changed gamemode to creative successfully!");
+                break;
             case "2":
             case "a":
                 ((Player) sender).setGameMode(GameMode.ADVENTURE);
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "Changed gamemode to adventure successfully!");
+                break;
             case "3":
             case "sp":
                 if(!sender.isOp())
@@ -64,6 +67,7 @@ public class MCmdGamemode implements CommandExecutor
                 }
                 ((Player) sender).setGameMode(GameMode.SPECTATOR);
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "Changed gamemode to spectator successfully!");
+                break;
         }
 
         return false;

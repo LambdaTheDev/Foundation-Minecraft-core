@@ -9,6 +9,7 @@ import pl.lambda.foundationminecraft.FoundationMinecraft;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class LambdaRank
@@ -40,31 +41,44 @@ public class LambdaRank
         if(rankDataStorage.getData().get("ranks." + lambdaID + ".name") != null)
         {
             String colorString = rankDataStorage.getData().getString("ranks." + lambdaID + ".color");
-            String prefix = rankDataStorage.getData().getString("ranks." + lambdaID + "prefix");
+            String prefix = rankDataStorage.getData().getString("ranks." + lambdaID + ".prefix");
             String name = rankDataStorage.getData().getString("ranks." + lambdaID + ".name");
             String discordID = rankDataStorage.getData().getString("ranks." + lambdaID + ".discordID");
-            List<String> permissions = rankDataStorage.getData().getStringList("ranks." + lambdaID + "permissions");
+            List<String> permissions = rankDataStorage.getData().getStringList("ranks." + lambdaID + ".permissions");
 
-            int spawnLocX = rankDataStorage.getData().getInt("ranks." + lambdaID + "spawnLoc.x");
-            int spawnLocY = rankDataStorage.getData().getInt("ranks." + lambdaID + "spawnLoc.y");
-            int spawnLocZ = rankDataStorage.getData().getInt("ranks." + lambdaID + "spawnLoc.z");
-            String spawnLocWString = rankDataStorage.getData().getString("ranks." + lambdaID + "spawnLoc.w");
-            World spawnLocW = Bukkit.getWorld(spawnLocWString);
+            int spawnLocX = rankDataStorage.getData().getInt("ranks." + lambdaID + ".spawnLoc.x");
+            int spawnLocY = rankDataStorage.getData().getInt("ranks." + lambdaID + ".spawnLoc.y");
+            int spawnLocZ = rankDataStorage.getData().getInt("ranks." + lambdaID + ".spawnLoc.z");
+            String spawnLocWString = rankDataStorage.getData().getString("ranks." + lambdaID + ".spawnLoc.w");
+            World spawnLocW;
+
+            if(Bukkit.getWorld(spawnLocWString) == null)
+            {
+                spawnLocW = Bukkit.getWorld(spawnLocWString);
+            }
+            else
+            {
+                spawnLocW = Bukkit.getWorlds().get(0);
+            }
+
             Location spawnLoc = new Location(spawnLocW, spawnLocX, spawnLocY, spawnLocZ);
 
-            return new LambdaRank(lambdaID, discordID, name, prefix, colorString, ChatColor.getByChar(colorString), spawnLoc, permissions);
+            return new LambdaRank(lambdaID, discordID, name.toLowerCase(), prefix, colorString, ChatColor.getByChar(colorString), spawnLoc, permissions);
         }
+        System.out.println("xxx");
         return null;
     }
 
     public static LambdaRank getRankByName(String name)
     {
+        name = name.toLowerCase();
         RankDataStorage rankDataStorage = FoundationMinecraft.getInstance().getRankDataStorage();
         ConfigurationSection section = rankDataStorage.getData().getConfigurationSection("ranks");
         if(section == null) return null;
         for(String lambdaID : section.getKeys(false))
         {
-            if(rankDataStorage.getData().getString("ranks." + lambdaID + ".name").equals(name))
+            String rankName = rankDataStorage.getData().getString("ranks." + lambdaID + ".name");
+            if(rankName.toLowerCase().equalsIgnoreCase(name))
             {
                 return getRankByLambdaID(lambdaID);
             }
@@ -90,14 +104,19 @@ public class LambdaRank
     public static void loadRanks()
     {
         RankDataStorage rankDataStorage = FoundationMinecraft.getInstance().getRankDataStorage();
+        rankDataStorage.reload();
         ConfigurationSection section = rankDataStorage.getData().getConfigurationSection("ranks");
         if(section == null) return;
+        FoundationMinecraft.getInstance().getLambdaRanks().clear();
 
         for(String rankID : section.getKeys(false))
         {
             LambdaRank rank = LambdaRank.getRankByLambdaID(rankID);
-            if(rank == null) continue;
-            FoundationMinecraft.getInstance().getLambdaRanks().clear();
+            if(rank == null)
+            {
+                System.out.println("Rank with LambdaID=" + rankID + " is unreachable.");
+                continue;
+            }
             FoundationMinecraft.getInstance().getLambdaRanks().add(rank);
         }
     }
@@ -190,5 +209,39 @@ public class LambdaRank
 
     public void setPermissions(List<String> permissions) {
         this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return "LambdaRank{" +
+                "lambdaID='" + lambdaID + '\'' +
+                ", discordID='" + discordID + '\'' +
+                ", name='" + name + '\'' +
+                ", prefix='" + prefix + '\'' +
+                ", color='" + color + '\'' +
+                ", chatColor=" + chatColor.name() +
+                ", spawnLocation=" + spawnLocation +
+                ", permissions=" + permissions +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LambdaRank that = (LambdaRank) o;
+        return lambdaID.equals(that.lambdaID) &&
+                discordID.equals(that.discordID) &&
+                name.equals(that.name) &&
+                prefix.equals(that.prefix) &&
+                color.equals(that.color) &&
+                chatColor == that.chatColor &&
+                Objects.equals(spawnLocation, that.spawnLocation) &&
+                Objects.equals(permissions, that.permissions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lambdaID, discordID, name, prefix, color, chatColor, spawnLocation, permissions);
     }
 }

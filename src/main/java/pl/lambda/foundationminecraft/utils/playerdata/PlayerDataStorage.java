@@ -48,6 +48,7 @@ public class PlayerDataStorage
         try
         {
             config.save(configFile);
+            Bukkit.getLogger().info("File playerData.yml and config has been saved!");
         }
         catch (IOException e)
         {
@@ -58,7 +59,6 @@ public class PlayerDataStorage
 
     public FileConfiguration getData()
     {
-        reload();
         return config;
     }
 }

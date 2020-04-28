@@ -12,9 +12,10 @@ public class OnPlayerRespawn implements Listener
     public void onPlayerRespawn(PlayerRespawnEvent e)
     {
         Config config = FoundationMinecraft.getInstance().getFmcConfig();
-        if(!(config.getSpawnLocation().getBlockX() == 0 && config.getSpawnLocation().getBlockY() == 0 && config.getSpawnLocation().getBlockZ() == 0))
+        config.reload();
+        if((config.getSpawnLocation().getBlockX() == 0 && config.getSpawnLocation().getBlockY() == 0 && config.getSpawnLocation().getBlockZ() == 0))
         {
-            e.getPlayer().teleport(config.getSpawnLocation());
+            e.setRespawnLocation(config.getSpawnLocation());
         }
     }
 }

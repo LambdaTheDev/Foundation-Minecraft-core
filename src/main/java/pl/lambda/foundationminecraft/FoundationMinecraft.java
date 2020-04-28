@@ -79,6 +79,10 @@ public class FoundationMinecraft extends JavaPlugin
                 syncDataStorage.setup();
 
                 LambdaRank.loadRanks();
+                for(LambdaRank rank : lambdaRanks)
+                {
+                    System.out.println(rank.toString());
+                }
                 break;
             case DISCORD:
                 discordModule = new DiscordModule();
