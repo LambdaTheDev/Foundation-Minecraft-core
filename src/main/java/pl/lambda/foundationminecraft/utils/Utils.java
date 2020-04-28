@@ -62,6 +62,10 @@ public class Utils
         {
             result.append(args[i]).append(" ");
         }
+        if(result.toString().endsWith(" "))
+        {
+            return result.toString().substring(0, result.toString().length() - 1);
+        }
         return result.toString();
     }
 
@@ -85,7 +89,7 @@ public class Utils
     public static boolean verifyHEX(String code)
     {
         if(code.length() != 1) return false;
-        Pattern pattern = Pattern.compile("0[xX][0-9a-fA-F]+");
-        return pattern.matcher(code).matches();
+        code = code.toLowerCase();
+        return code.matches("-?[0-9a-fA-F]+");
     }
 }

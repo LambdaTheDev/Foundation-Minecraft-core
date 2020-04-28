@@ -39,7 +39,7 @@ public class DCmdDeletedept extends ListenerAdapter
             LambdaRank rank = LambdaRank.getRankByName(name);
             if(rank == null)
             {
-                e.getTextChannel().sendMessage("**Error!** That ran not exist (system is case-sensitive)!").queue();
+                e.getTextChannel().sendMessage("**Error!** That rank not exist (system is case-sensitive)!").queue();
                 return;
             }
 

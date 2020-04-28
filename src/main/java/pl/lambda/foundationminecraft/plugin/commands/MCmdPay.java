@@ -1,5 +1,6 @@
 package pl.lambda.foundationminecraft.plugin.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -7,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.utils.playerdata.LambdaPlayer;
+import pl.lambda.foundationminecraft.utils.ranksdata.LambdaRank;
 
 public class MCmdPay implements CommandExecutor
 {
@@ -21,18 +23,29 @@ public class MCmdPay implements CommandExecutor
             return false;
         }
 
-        LambdaPlayer target = LambdaPlayer.getLambdaPlayerByNickname(args[0]);
-        if(target == null)
+        LambdaPlayer target;
+
+        if(Bukkit.getPlayer(args[0]) != null)
         {
-            sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "Player with that nickname hasn't played here (system is case-sensitive)!");
-            return false;
+            target = FoundationMinecraft.getInstance().getLambdaPlayers().get(Bukkit.getPlayer(args[0]));
         }
+        else
+        {
+            target = LambdaPlayer.getLambdaPlayerByNickname(args[0]);
+            if(target == null)
+            {
+                sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "Player with that nickname hasn't played here (system is case-sensitive)!");
+                return false;
+            }
+        }
+
 
         int amount = Integer.parseInt(args[1]);
 
         if(sender.isOp())
         {
             target.setMoney(target.getMoney() + amount);
+            target.save();
             sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You shared " + amount + " money to " + args[0] + " from OP's wallet!");
         }
         else
@@ -44,6 +57,8 @@ public class MCmdPay implements CommandExecutor
             {
                 lambdaSender.setMoney(lambdaSender.getMoney() - amount);
                 target.setMoney(target.getMoney() + amount);
+                lambdaSender.save();
+                target.save();
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You shared " + amount + " money to " + args[0] + " from your wallet!");
             }
             else

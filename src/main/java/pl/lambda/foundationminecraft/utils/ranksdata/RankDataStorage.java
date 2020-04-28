@@ -57,7 +57,6 @@ public class RankDataStorage
 
     public FileConfiguration getData()
     {
-        reload();
         return config;
     }
 }

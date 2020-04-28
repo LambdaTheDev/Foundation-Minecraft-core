@@ -24,7 +24,7 @@ public class DCmdSetupdept extends ListenerAdapter
     {
         String[] args = e.getMessage().getContentRaw().split(" ");
         Config config = FoundationMinecraft.getInstance().getFmcConfig();
-        if(args[0].equalsIgnoreCase("setupdept"))
+        if(args[0].equalsIgnoreCase(config.getDiscordBotPrefix() + "setupdept"))
         {
             if(!e.getMember().hasPermission(Permission.ADMINISTRATOR))
             {

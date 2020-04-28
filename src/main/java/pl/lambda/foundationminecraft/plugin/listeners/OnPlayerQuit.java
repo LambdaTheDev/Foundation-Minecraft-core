@@ -14,6 +14,6 @@ public class OnPlayerQuit implements Listener
         FoundationMinecraft.getInstance().getLambdaPlayers().get(e.getPlayer()).save();
         FoundationMinecraft.getInstance().getLambdaPlayers().remove(e.getPlayer());
         e.setQuitMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + e.getPlayer().getName() + " left the game!");
-        FoundationMinecraft.getInstance().getDiscordModule().getSyncChannel().sendMessage("**" + e.getPlayer() + "** has left the game!").queue();
+        FoundationMinecraft.getInstance().getDiscordModule().getSyncChannel().sendMessage("**" + e.getPlayer().getName() + "** has left the game!").queue();
     }
 }

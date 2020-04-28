@@ -9,12 +9,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.utils.Utils;
 import pl.lambda.foundationminecraft.utils.playerdata.LambdaPlayer;
 import pl.lambda.foundationminecraft.utils.ranksdata.LambdaRank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MCmdDepts implements CommandExecutor
@@ -44,19 +46,33 @@ public class MCmdDepts implements CommandExecutor
             if(args[0].equalsIgnoreCase("choose"))
             {
                 List<LambdaRank> lambdaRanks = lambdaPlayer.getLambdaRanks();
-                inventory = Bukkit.createInventory(null, 27, "FMC: Choose department");
 
+                if(lambdaRanks.isEmpty())
+                {
+                    sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "You don't have any roles now! If you think that's an error, rejoin.");
+                    return false;
+                }
+
+                int size = 27;
+                Inventory gui = Bukkit.createInventory(null, size, "FMC: Choose department");
+                int i = 0;
+
+                System.out.println(lambdaRanks.toString());
                 for(LambdaRank rank : lambdaRanks)
                 {
                     DyeColor color = Utils.getDyeColor(rank.getColor());
                     ItemStack item = new Wool(color).toItemStack(1);
-                    item.getItemMeta().setDisplayName(rank.getName());
+                    ItemMeta meta = item.getItemMeta();
 
-                    inventory.addItem(item);
+                    meta.setDisplayName(rank.getName());
+                    item.setItemMeta(meta);
+
+                    gui.setItem(i, item);
+                    i++;
                 }
 
                 ((Player) sender).closeInventory();
-                ((Player) sender).openInventory(inventory);
+                ((Player) sender).openInventory(gui);
             }
             else if(args[0].equalsIgnoreCase("balance"))
             {
@@ -94,15 +110,21 @@ public class MCmdDepts implements CommandExecutor
                 return false;
             }
 
-            if(FoundationMinecraft.getInstance().getLambdaPlayers().get(sender).getLambdaRanks().contains(checkRank))
+            List<String> playerRankLambdaIDs = new ArrayList<>();
+            for(LambdaRank lambdaRank : FoundationMinecraft.getInstance().getLambdaPlayers().get(sender).getLambdaRanks())
+            {
+                playerRankLambdaIDs.add(lambdaRank.getLambdaID());
+            }
+
+            if(playerRankLambdaIDs.contains(checkRank.getLambdaID()))
             {
                 FoundationMinecraft.getInstance().getLambdaPlayers().get(sender).setCurrentLambdaRank(checkRank);
+                sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "Your current rank updated successfully!");
             }
             else
             {
-                inventory = createMainMenu();
-                ((Player) sender).closeInventory();
-                ((Player) sender).openInventory(inventory);
+                System.out.println(FoundationMinecraft.getInstance().getLambdaPlayers().get(sender).getLambdaRanks().toString());
+                sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "You don't have access to set this role!");
             }
         }
         else
@@ -123,9 +145,18 @@ public class MCmdDepts implements CommandExecutor
         ItemStack balance = new Wool(DyeColor.YELLOW).toItemStack(1);
         ItemStack info = new Wool(DyeColor.LIGHT_BLUE).toItemStack(1);
 
-        choose.getItemMeta().setDisplayName("Choose department");
-        balance.getItemMeta().setDisplayName("Check your balance");
-        info.getItemMeta().setDisplayName("Info about plugin");
+
+        ItemMeta chooseMeta = choose.getItemMeta();
+        ItemMeta balanceMeta = balance.getItemMeta();
+        ItemMeta infoMeta = info.getItemMeta();
+
+        chooseMeta.setDisplayName("Choose department");
+        balanceMeta.setDisplayName("Check your balance");
+        infoMeta.setDisplayName("Info about plugin");
+
+        choose.setItemMeta(chooseMeta);
+        balance.setItemMeta(balanceMeta);
+        info.setItemMeta(infoMeta);
 
         inventory.setItem(1, choose);
         inventory.setItem(4, balance);
