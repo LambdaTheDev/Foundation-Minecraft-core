@@ -8,28 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdDeletedept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdDeletedept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdRefreshroles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdRefreshroles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSetupdept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSetupdept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSync.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleAdd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/listeners/OnGuildMemberRoleRemove.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdDepts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdDepts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdGamemode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdGamemode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdSetspawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdSetspawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnAsyncPlayerChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerQuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerQuit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerRespawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerRespawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/playerdata/LambdaPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/playerdata/LambdaPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/playerdata/PlayerDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/playerdata/PlayerDataStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/ranksdata/LambdaRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/ranksdata/LambdaRank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/ranksdata/RankDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/ranksdata/RankDataStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +199,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java</url>
-          <line>135</line>
+          <line>137</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

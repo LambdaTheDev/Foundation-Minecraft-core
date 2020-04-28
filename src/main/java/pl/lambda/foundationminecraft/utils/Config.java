@@ -34,6 +34,7 @@ public class Config
 
     private HashMap<String, Integer> levelRoles;
     private String siteDirectorRole;
+    private String goiHighRankRole;
 
     public void setup()
     {
@@ -117,6 +118,7 @@ public class Config
         config.set("roles.level4", "discord-role-id");
         config.set("roles.level5", "discord-role-id");
         config.set("roles.siteDirector", "discord-role-id");
+        config.set("roles.goiHighRank", "discord-role-id");
         save();
     }
 
@@ -157,6 +159,7 @@ public class Config
 
         this.levelRoles = levelRoles;
         this.siteDirectorRole = config.getString("roles.siteDirector");
+        this.goiHighRankRole = config.getString("roles.goiHighRank");
         return this;
     }
 
@@ -210,5 +213,9 @@ public class Config
 
     public void setSpawnLocation(Location spawnLocation) {
         this.spawnLocation = spawnLocation;
+    }
+
+    public String getGoiHighRankRole() {
+        return goiHighRankRole;
     }
 }

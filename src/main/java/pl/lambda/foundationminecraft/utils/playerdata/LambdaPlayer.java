@@ -24,18 +24,20 @@ public class LambdaPlayer
     String discordID;
     ChatType chatType;
     boolean isSiteDirector;
+    boolean isGoiHighRank;
     int money;
     int clearance;
     LambdaRank currentLambdaRank;
     List<LambdaRank> lambdaRanks;
 
-    private LambdaPlayer(Player player, String discordID, boolean isSiteDirector, int money, int clearance, List<LambdaRank> lambdaRanks)
+    private LambdaPlayer(Player player, String discordID, boolean isSiteDirector, boolean isGoIHighRank, int money, int clearance, List<LambdaRank> lambdaRanks)
     {
         this.player = player;
         this.discordID = discordID;
         this.nickname = player.getName();
         this.chatType = ChatType.GLOBAL;
         this.isSiteDirector = isSiteDirector;
+        this.isGoiHighRank = isGoIHighRank;
         this.money = money;
         this.clearance = clearance;
         this.currentLambdaRank = null;
@@ -71,6 +73,7 @@ public class LambdaPlayer
 
             Player player;
             boolean isSiteDirector = false;
+            boolean isGoIHighRank = false;
             int clearance = -1;
 
             if(discordID != null)
@@ -87,9 +90,11 @@ public class LambdaPlayer
                     String roleID = role.getId();
                     HashMap<String, Integer> clearanceLevelRoles = config.getLevelRoles();
                     String sidRoleID = config.getSiteDirectorRole();
+                    String goiHRRoleID = config.getGoiHighRankRole();
                     int roleClearance = clearanceLevelRoles.getOrDefault(roleID, -1);
                     if(roleClearance > clearance) clearance = roleClearance;
                     if(roleID.equals(sidRoleID)) isSiteDirector = true;
+                    if(roleID.equals(goiHRRoleID)) isGoIHighRank = true;
                 }
             }
 
@@ -103,7 +108,7 @@ public class LambdaPlayer
                 if(rank != null) lambdaRanks.add(rank);
             }
 
-            return new LambdaPlayer(player, discordID, isSiteDirector, money, clearance, lambdaRanks);
+            return new LambdaPlayer(player, discordID, isSiteDirector, isGoIHighRank, money, clearance, lambdaRanks);
         }
         return null;
     }
@@ -142,7 +147,7 @@ public class LambdaPlayer
 
     public static LambdaPlayer createLambdaPlayer(Player player)
     {
-        return new LambdaPlayer(player, null, false, 0, -1, new ArrayList<LambdaRank>());
+        return new LambdaPlayer(player, null, false, false, 0, -1, new ArrayList<LambdaRank>());
     }
 
     public Player getPlayer()
@@ -209,6 +214,14 @@ public class LambdaPlayer
     public void setLambdaRanks(List<LambdaRank> lambdaRanks)
     {
         this.lambdaRanks = lambdaRanks;
+    }
+
+    public boolean isGoiHighRank() {
+        return isGoiHighRank;
+    }
+
+    public void setGoiHighRank(boolean goiHighRank) {
+        isGoiHighRank = goiHighRank;
     }
 
     @Override
