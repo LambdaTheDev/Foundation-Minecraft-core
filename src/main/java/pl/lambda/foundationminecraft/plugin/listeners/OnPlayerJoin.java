@@ -50,6 +50,11 @@ public class OnPlayerJoin implements Listener
             }
         }
 
+        if(!e.getPlayer().hasPlayedBefore())
+        {
+            e.getPlayer().teleport(FoundationMinecraft.getInstance().getFmcConfig().getSpawnLocation());
+        }
+
         lambdaPlayer.save();
         FoundationMinecraft.getInstance().getLambdaPlayers().putIfAbsent(e.getPlayer(), lambdaPlayer);
         e.getPlayer().setGameMode(GameMode.ADVENTURE);

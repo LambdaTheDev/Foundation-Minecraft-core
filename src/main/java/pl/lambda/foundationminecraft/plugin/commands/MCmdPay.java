@@ -24,6 +24,7 @@ public class MCmdPay implements CommandExecutor
         }
 
         LambdaPlayer target;
+        Player p = null;
 
         if(Bukkit.getPlayer(args[0]) != null)
         {
@@ -31,6 +32,7 @@ public class MCmdPay implements CommandExecutor
         }
         else
         {
+            p = Bukkit.getPlayer(args[0]);
             target = LambdaPlayer.getLambdaPlayerByNickname(args[0]);
             if(target == null)
             {
@@ -47,6 +49,7 @@ public class MCmdPay implements CommandExecutor
             target.setMoney(target.getMoney() + amount);
             target.save();
             sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You shared " + amount + " money to " + args[0] + " from OP's wallet!");
+            if(p != null) p.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You received from " + sender.getName() + " " + amount + " money!");
         }
         else
         {
@@ -59,6 +62,7 @@ public class MCmdPay implements CommandExecutor
                 target.setMoney(target.getMoney() + amount);
                 lambdaSender.save();
                 target.save();
+                if(p != null) p.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You received from " + sender.getName() + " " + amount + " money!");
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You shared " + amount + " money to " + args[0] + " from your wallet!");
             }
             else

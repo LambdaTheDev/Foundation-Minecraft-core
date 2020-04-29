@@ -13,3 +13,5 @@ commands:
   setspawn:
   spawn:
   sync:
+  setupdeptspawn:
+  explosions:
