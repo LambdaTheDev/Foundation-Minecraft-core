@@ -59,6 +59,7 @@ public class DCmdSetupdept extends ListenerAdapter
             roleID = mentionedRole.getId();
 
             LambdaRank.createLambdaRank(roleID, name, shortcut, colorCode);
+            LambdaRank.loadRanks();
             e.getTextChannel().sendMessage("**Success!** New rank with name " + name + " created successfully!").queue();
         }
     }

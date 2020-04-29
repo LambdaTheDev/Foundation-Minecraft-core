@@ -10,6 +10,8 @@ import pl.lambda.foundationminecraft.FoundationMinecraft;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 
 public class Config
@@ -18,7 +20,7 @@ public class Config
     private FileConfiguration config;
     private File configFile;
 
-    private final int CONFIG_VERSION = 1;
+    private final int CONFIG_VERSION = 2;
 
     private int configVersion;
     private String discordBotToken;
@@ -35,6 +37,9 @@ public class Config
     private HashMap<String, Integer> levelRoles;
     private String siteDirectorRole;
     private String goiHighRankRole;
+
+    private int playerPayment;
+    private int siteDirectorPayment;
 
     public void setup()
     {
@@ -119,11 +124,25 @@ public class Config
         config.set("roles.level5", "discord-role-id");
         config.set("roles.siteDirector", "discord-role-id");
         config.set("roles.goiHighRank", "discord-role-id");
+
+        config.set("payments.player", 5);
+        config.set("payments.siteDirector", 30);
         save();
     }
 
     public Config buildObject()
     {
+        if(config.getInt("configVersion") != CONFIG_VERSION)
+        {
+            try {
+                Files.deleteIfExists(configFile.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            setup();
+        }
+
         this.configVersion = config.getInt("configVersion");
         this.discordBotToken = config.getString("discord.botToken");
         this.discordBotPrefix = config.getString("discord.botPrefix");
@@ -160,6 +179,9 @@ public class Config
         this.levelRoles = levelRoles;
         this.siteDirectorRole = config.getString("roles.siteDirector");
         this.goiHighRankRole = config.getString("roles.goiHighRank");
+
+        this.playerPayment = config.getInt("payments.player");
+        this.siteDirectorPayment = config.getInt("payments.siteDirector");
         return this;
     }
 
@@ -217,5 +239,13 @@ public class Config
 
     public String getGoiHighRankRole() {
         return goiHighRankRole;
+    }
+
+    public int getPlayerPayment() {
+        return playerPayment;
+    }
+
+    public int getSiteDirectorPayment() {
+        return siteDirectorPayment;
     }
 }

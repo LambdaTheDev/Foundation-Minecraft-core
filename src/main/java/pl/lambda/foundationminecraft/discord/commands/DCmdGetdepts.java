@@ -9,10 +9,13 @@ import pl.lambda.foundationminecraft.utils.Config;
 import pl.lambda.foundationminecraft.utils.Utils;
 import pl.lambda.foundationminecraft.utils.ranksdata.LambdaRank;
 
-public class DCmdDeletedept extends ListenerAdapter
+import java.util.HashMap;
+import java.util.List;
+
+public class DCmdGetdepts extends ListenerAdapter
 {
     private DiscordModule discordModule;
-    public DCmdDeletedept(DiscordModule discordModule)
+    public DCmdGetdepts(DiscordModule discordModule)
     {
         this.discordModule = discordModule;
     }
@@ -21,7 +24,7 @@ public class DCmdDeletedept extends ListenerAdapter
     {
         Config config = FoundationMinecraft.getInstance().getFmcConfig();
         String[] args = e.getMessage().getContentRaw().split(" ");
-        if(args[0].equalsIgnoreCase(config.getDiscordBotPrefix() + "deletedept"))
+        if(args[0].equalsIgnoreCase(config.getDiscordBotPrefix() + "getdepts"))
         {
             if(!e.getMember().hasPermission(Permission.ADMINISTRATOR))
             {
@@ -29,23 +32,13 @@ public class DCmdDeletedept extends ListenerAdapter
                 return;
             }
 
-            if(!(args.length >= 2))
+            List<LambdaRank> lambdaRanks = FoundationMinecraft.getInstance().getLambdaRanks();
+            e.getTextChannel().sendMessage("**List of registered ranks:**").queue();
+            for(LambdaRank rank : lambdaRanks)
             {
-                e.getTextChannel().sendMessage("**Error!** Wrong usage. Correct: " + config.getDiscordBotPrefix() + "deletedept <name...>!").queue();
-                return;
+                String message = "__" + rank.getName() + "__\nDiscord ID: " + rank.getDiscordID() + "\nColor: " + rank.getColor() + "\nPrefix: " + rank.getPrefix();
+                e.getTextChannel().sendMessage(message).queue();
             }
-
-            String name = Utils.argsBuilder(args, 2);
-            LambdaRank rank = LambdaRank.getRankByName(name);
-            if(rank == null)
-            {
-                e.getTextChannel().sendMessage("**Error!** That rank not exist (system is case-sensitive)!").queue();
-                return;
-            }
-
-            rank.deleteRank();
-            LambdaRank.loadRanks();
-            e.getTextChannel().sendMessage("**Success!** Rank deleted successfully!").queue();
         }
     }
 }

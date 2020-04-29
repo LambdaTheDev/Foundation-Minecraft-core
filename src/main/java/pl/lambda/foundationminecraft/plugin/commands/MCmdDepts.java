@@ -119,6 +119,10 @@ public class MCmdDepts implements CommandExecutor
             if(playerRankLambdaIDs.contains(checkRank.getLambdaID()))
             {
                 FoundationMinecraft.getInstance().getLambdaPlayers().get(sender).setCurrentLambdaRank(checkRank);
+                if(!(checkRank.getSpawnLocation().getBlockX() == 0 && checkRank.getSpawnLocation().getBlockY() == 0 && checkRank.getSpawnLocation().getBlockZ() == 0))
+                {
+                    ((Player) sender).teleport(checkRank.getSpawnLocation());
+                }
                 sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "Your current rank updated successfully!");
             }
             else

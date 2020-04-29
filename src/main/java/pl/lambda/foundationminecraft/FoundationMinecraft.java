@@ -1,6 +1,8 @@
 package pl.lambda.foundationminecraft;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.lambda.foundationminecraft.discord.DiscordModule;
@@ -22,8 +24,9 @@ import java.util.List;
 public class FoundationMinecraft extends JavaPlugin
 {
     public static final String PLUGIN_INFO = "";
-    public static final String VERSION = "2.0";
+    public static final String VERSION = "2.1";
     public static boolean SERVER_ENABLED = false;
+    public static boolean EXPLOSIONS_ALLOWED = false;
 
     private static FoundationMinecraft instance;
 
@@ -36,6 +39,8 @@ public class FoundationMinecraft extends JavaPlugin
     private HashMap<Player, LambdaPlayer> lambdaPlayers = new HashMap<>();
     private List<LambdaRank> lambdaRanks = new ArrayList<>();
 
+    public int taskID = 0;
+
     @Override
     public void onEnable()
     {
@@ -45,6 +50,8 @@ public class FoundationMinecraft extends JavaPlugin
         setupFoundationMinecraft(PluginLoader.COMMANDS);
         setupFoundationMinecraft(PluginLoader.LISTENERS);
         setupFoundationMinecraft(PluginLoader.DISCORD);
+
+        setupRepeatingTasks();
     }
 
     @Override
@@ -53,6 +60,10 @@ public class FoundationMinecraft extends JavaPlugin
         SyncManager.clearSync();
         lambdaPlayers.clear();
         lambdaRanks.clear();
+
+        Bukkit.getScheduler().cancelAllTasks();
+        discordModule.getSyncChannel().sendMessage("**Server closed!** It should be opened again soon.").queue();
+
         try
         {
             if(discordModule.getJDA() != null) discordModule.getJDA().shutdown();
@@ -61,6 +72,30 @@ public class FoundationMinecraft extends JavaPlugin
         {
 
         }
+    }
+
+    void setupRepeatingTasks()
+    {
+        FoundationMinecraft.getInstance().taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+            @Override
+            public void run()
+            {
+                LambdaRank.loadRanks();
+                Config config = FoundationMinecraft.getInstance().getFmcConfig();
+                for(Player p : Bukkit.getOnlinePlayers())
+                {
+                    LambdaPlayer lambdaPlayer = FoundationMinecraft.getInstance().getLambdaPlayers().get(p);
+                    lambdaPlayer.setMoney(lambdaPlayer.getMoney() + config.getPlayerPayment());
+                    p.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You received your payment (" + config.getPlayerPayment() + " money) for playing!");
+                    if(lambdaPlayer.isSiteDirector())
+                    {
+                        lambdaPlayer.setMoney(lambdaPlayer.getMoney() + config.getSiteDirectorPayment());
+                        p.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.GREEN + "You received your Site Director payment (" + config.getSiteDirectorPayment() + " money) for playing!");
+                    }
+                    lambdaPlayer.save();
+                }
+            }
+        }, 0, 20 * 60 * 20);
     }
 
     private void setupFoundationMinecraft(PluginLoader type)
@@ -98,6 +133,8 @@ public class FoundationMinecraft extends JavaPlugin
                 getCommand("setspawn").setExecutor(new MCmdSetspawn());
                 getCommand("spawn").setExecutor(new MCmdSpawn());
                 getCommand("sync").setExecutor(new MCmdSync());
+                getCommand("explosions").setExecutor(new MCmdExplosions());
+                getCommand("setupdeptspawn").setExecutor(new MCmdSetupdeptspawn());
                 break;
             case LISTENERS:
                 getServer().getPluginManager().registerEvents(new OnAsyncPlayerChat(), this);
@@ -107,6 +144,7 @@ public class FoundationMinecraft extends JavaPlugin
                 getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
                 getServer().getPluginManager().registerEvents(new OnPlayerRespawn(), this);
                 getServer().getPluginManager().registerEvents(new OnServerPing(), this);
+                getServer().getPluginManager().registerEvents(new OnBlockExplode(), this);
                 break;
         }
     }
