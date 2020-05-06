@@ -14,6 +14,8 @@ import pl.lambda.foundationminecraft.utils.playerdata.LambdaPlayer;
 import pl.lambda.foundationminecraft.utils.playerdata.PlayerDataStorage;
 import pl.lambda.foundationminecraft.utils.ranksdata.LambdaRank;
 import pl.lambda.foundationminecraft.utils.ranksdata.RankDataStorage;
+import pl.lambda.foundationminecraft.utils.shopdata.Shop;
+import pl.lambda.foundationminecraft.utils.shopdata.ShopDataStorage;
 import pl.lambda.foundationminecraft.utils.syncdata.SyncDataStorage;
 import pl.lambda.foundationminecraft.utils.syncdata.SyncManager;
 
@@ -35,6 +37,8 @@ public class FoundationMinecraft extends JavaPlugin
     private RankDataStorage rankDataStorage;
     private SyncDataStorage syncDataStorage;
     private DiscordModule discordModule;
+    private ShopDataStorage shopDataStorage;
+    private Shop shop;
 
     private HashMap<Player, LambdaPlayer> lambdaPlayers = new HashMap<>();
     private List<LambdaRank> lambdaRanks = new ArrayList<>();
@@ -107,12 +111,15 @@ public class FoundationMinecraft extends JavaPlugin
                 playerDataStorage = new PlayerDataStorage();
                 rankDataStorage = new RankDataStorage();
                 syncDataStorage = new SyncDataStorage();
+                shopDataStorage = new ShopDataStorage();
 
                 fmcConfig.setup();
                 playerDataStorage.setup();
                 rankDataStorage.setup();
                 syncDataStorage.setup();
+                shopDataStorage.setup();
 
+                shop = new Shop();
                 LambdaRank.loadRanks();
                 for(LambdaRank rank : lambdaRanks)
                 {
@@ -135,6 +142,7 @@ public class FoundationMinecraft extends JavaPlugin
                 getCommand("sync").setExecutor(new MCmdSync());
                 getCommand("explosions").setExecutor(new MCmdExplosions());
                 getCommand("setupdeptspawn").setExecutor(new MCmdSetupdeptspawn());
+                getCommand("shop").setExecutor(new MCmdShop());
                 break;
             case LISTENERS:
                 getServer().getPluginManager().registerEvents(new OnAsyncPlayerChat(), this);
@@ -190,5 +198,13 @@ public class FoundationMinecraft extends JavaPlugin
     public static String getUsage(String usage)
     {
         return getPrefix() + ChatColor.RED + "Incorrect command usage! Correct: " + usage + "!";
+    }
+
+    public ShopDataStorage getShopDataStorage() {
+        return shopDataStorage;
+    }
+
+    public Shop getShop() {
+        return shop;
     }
 }

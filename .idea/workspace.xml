@@ -7,22 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/SCP_Lockdown_1_12_2_2_3_1_dev.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdGetdepts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdReloadranks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdExplosions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdSetupdeptspawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnBlockExplode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/ShopCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/ShopDataStorage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/ShopItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/DiscordModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdDeletedept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdDeletedept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSetupdept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/discord/commands/DCmdSetupdept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdDepts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdDepts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnPlayerJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +73,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/SCP+Lockdown-1.12.2-2.3.1-dev.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15625" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="copyright" />
@@ -138,10 +130,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Config issue fix 2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1588174617615">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1588763606767">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588174617615" />
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588763606767" />
     <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587913024989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -174,18 +166,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588065900860" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1588189336620">
+    <state x="249" y="0" key="SettingsEditor" timestamp="1588763825014">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588189336620" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588763825014" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1587898198938">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587898198938" />
-    <state x="567" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588172851895">
+    <state x="567" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588756895374">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="567" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1588172851895" />
+    <state x="567" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1588756895374" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587816699299">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
