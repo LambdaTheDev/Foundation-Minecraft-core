@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.lambda.foundationminecraft.FoundationMinecraft;
 import pl.lambda.foundationminecraft.utils.playerdata.LambdaPlayer;
-import pl.lambda.foundationminecraft.utils.ranksdata.LambdaRank;
 
 public class MCmdPay implements CommandExecutor
 {
@@ -43,6 +42,11 @@ public class MCmdPay implements CommandExecutor
 
 
         int amount = Integer.parseInt(args[1]);
+        if(amount < 0)
+        {
+            sender.sendMessage(FoundationMinecraft.getPrefix() + ChatColor.RED + "Nice try thief!");
+            return false;
+        }
 
         if(sender.isOp())
         {
