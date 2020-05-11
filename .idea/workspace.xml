@@ -7,15 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a28ab3-4a47-4485-951e-187a21ab0b14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdShop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/Shop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/ShopCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/ShopDataStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/utils/shopdata/ShopItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/FoundationMinecraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/listeners/OnInventoryClick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/lambda/foundationminecraft/plugin/commands/MCmdPay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
