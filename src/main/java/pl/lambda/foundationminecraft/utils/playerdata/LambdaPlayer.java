@@ -35,7 +35,7 @@ public class LambdaPlayer
         this.player = player;
         this.discordID = discordID;
         this.nickname = player.getName();
-        this.chatType = ChatType.GLOBAL;
+        this.chatType = ChatType.LOCAL;
         this.isSiteDirector = isSiteDirector;
         this.isGoiHighRank = isGoIHighRank;
         this.money = money;

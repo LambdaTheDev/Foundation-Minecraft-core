@@ -19,14 +19,12 @@ import pl.lambda.foundationminecraft.utils.shopdata.ShopDataStorage;
 import pl.lambda.foundationminecraft.utils.syncdata.SyncDataStorage;
 import pl.lambda.foundationminecraft.utils.syncdata.SyncManager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class FoundationMinecraft extends JavaPlugin
 {
     public static final String PLUGIN_INFO = "";
-    public static final String VERSION = "2.1";
+    public static final String VERSION = "2.2";
     public static boolean SERVER_ENABLED = false;
     public static boolean EXPLOSIONS_ALLOWED = false;
 
@@ -40,6 +38,9 @@ public class FoundationMinecraft extends JavaPlugin
     private ShopDataStorage shopDataStorage;
     private Shop shop;
 
+    private HashMap<Player, Player> teleportRequests = new HashMap<>();
+    private HashMap<UUID, Date> tpaCommandCooldown = new HashMap<>();
+    private HashMap<UUID, Date> tpacceptCommandCooldown = new HashMap<>();
     private HashMap<Player, LambdaPlayer> lambdaPlayers = new HashMap<>();
     private List<LambdaRank> lambdaRanks = new ArrayList<>();
 
@@ -143,6 +144,11 @@ public class FoundationMinecraft extends JavaPlugin
                 getCommand("explosions").setExecutor(new MCmdExplosions());
                 getCommand("setupdeptspawn").setExecutor(new MCmdSetupdeptspawn());
                 getCommand("shop").setExecutor(new MCmdShop());
+                getCommand("broadcast").setExecutor(new MCmdBroadcast());
+                getCommand("report").setExecutor(new MCmdReport());
+                getCommand("tpa").setExecutor(new MCmdTpa());
+                getCommand("tpaccept").setExecutor(new MCmdTpaccept());
+                getCommand("tpdeny").setExecutor(new MCmdTpdeny());
                 break;
             case LISTENERS:
                 getServer().getPluginManager().registerEvents(new OnAsyncPlayerChat(), this);
@@ -206,5 +212,18 @@ public class FoundationMinecraft extends JavaPlugin
 
     public Shop getShop() {
         return shop;
+    }
+
+    public HashMap<UUID, Date> getTpaCommandCooldown() {
+        return tpaCommandCooldown;
+    }
+
+    public HashMap<UUID, Date> getTpacceptCommandCooldown() {
+        return tpacceptCommandCooldown;
+    }
+
+    //player to telepoer, player that wants to teleport
+    public HashMap<Player, Player> getTeleportRequests() {
+        return teleportRequests;
     }
 }

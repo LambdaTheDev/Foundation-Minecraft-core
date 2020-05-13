@@ -1,5 +1,5 @@
 name: FoundationMinecraft
-version: '2.1'
+version: '2.2'
 main: pl.lambda.foundationminecraft.FoundationMinecraft
 authors: [Lambda]
 description: Plugin designed Foundation Minecraft server.
@@ -16,3 +16,8 @@ commands:
   setupdeptspawn:
   explosions:
   shop:
+  broadcast:
+  report:
+  tpa:
+  tpaccept:
+  tpdeny:
