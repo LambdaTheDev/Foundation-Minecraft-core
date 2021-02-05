@@ -1,8 +1,8 @@
-name: FoundationMinecraft
-version: '2.1'
+name: SCPCoreSpigot
+version: '2.2'
 main: pl.lambda.foundationminecraft.FoundationMinecraft
 authors: [Lambda]
-description: Plugin designed Foundation Minecraft server.
+description: Plugin designed originally for Foundation Minecraft server.
 commands:
   chattype:
   depts:
